@@ -1,6 +1,6 @@
 import pytest
 from fastapi.testclient import TestClient
-from NTPD3 import app  
+from main import app  # załóżmy, że Twoje API jest w pliku main.py
 
 client = TestClient(app)
 
@@ -36,4 +36,4 @@ def test_model_accuracy():
     predicted = response.json()["predicted_score"]
     expected = 15.0
     error_margin = abs(predicted - expected) / expected
-    assert error_margin < 0.4  
+    assert error_margin < 0.3  #
