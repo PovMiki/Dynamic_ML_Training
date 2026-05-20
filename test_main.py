@@ -1,6 +1,6 @@
 import pytest
 from fastapi.testclient import TestClient
-from main import app  # załóżmy, że Twoje API jest w pliku main.py
+from NTPD3 import app
 
 client = TestClient(app)
 
