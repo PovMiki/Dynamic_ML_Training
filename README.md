@@ -19,3 +19,17 @@ Za pomocą obiektu Report skonfigurowałem szablon DataDriftPresent który autom
 
 
 Wyniki porównania zostały zapisane do data_drift_report za pomocą metody .save_html. Dataset Drift wyświetla procentowy udział dryfujących cech. Raport generuje wykresy gęstości rozkładu dla każdej cechy osobno
+
+Zadanie 3: Analiza jakości predykcji po wdrożeniu
+
+<img width="720" height="464" alt="image" src="https://github.com/user-attachments/assets/939eb7a0-ea81-49fa-aacd-5bc81f339b0c" />
+
+Zainicjalizowałem DataDefinition w którym jest klasyfikacja binarna. Wskazuje się tam kolumnę zawierającą rzeczywiste etykiety klas oraz przechowującą decyzje podjęte przez model. Przed dokonaniem ewaluacji df_train musiał zostać uzupełniony o bazowe predykcje aby porównać predykcje. Obie struktury danych DataFrame zostały opakowane za pomocą Dataset.from_pandas()
+
+<img width="1761" height="894" alt="image" src="https://github.com/user-attachments/assets/13736aaa-0a43-435f-aec2-0bf457855129" />
+
+Accuracy dla current wynosi idealnie 1.0 a zbiór referencyjny osiąga 0.353. Confusion Matrix potwierdza że model bezbłędnie klasyfikuje nowe dane z produkcji natomiast generuje masowe błędy na danych historycznych. Zajzd metryk potwierdza wystąpienie Model Drift.
+
+**Wnioski :**
+
+Laboratorium pozwoliło na wdrożenie monitorowania modelu uczenia maszynowego za pomocą Evidently. Analiza wykazała obecność Data Driftu pomiędzy danymi historycznymi a nowym zbiorem produkcyjnym.
